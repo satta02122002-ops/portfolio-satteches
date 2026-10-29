@@ -87,10 +87,9 @@ Cloudflare dashboard → **Workers & Pages → Create → Import a repository** 
 - Deploy command: `npx opennextjs-cloudflare deploy`
 - Branch: the branch you want live
 
-### Put it on satteches.com
+### Domains
 
-1. In Cloudflare DNS for `satteches.com`, delete the old `A` / `CNAME` records for `@` and `www` that point at the previous site.
-2. Uncomment the `routes` block at the bottom of `wrangler.jsonc` and deploy again. Cloudflare creates the DNS records and certificate.
+`wrangler.jsonc` attaches `satteches.com` and `www.satteches.com` as Custom Domains on every deploy, and Cloudflare creates their DNS records and certificates. The `satteches.com` zone must be **Active** in Cloudflare (its nameservers set at your registrar).
 
 ### Settings
 
