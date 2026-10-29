@@ -184,3 +184,91 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* /cv page: plain document typography that also prints on one A4 page. */
+.cv section {
+  margin-top: 1.25rem;
+}
+.cv h2 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+.cv h3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+.cv .cv-dates {
+  font-weight: 400;
+  color: var(--muted);
+}
+.cv ul {
+  list-style: disc;
+  padding-left: 1.1rem;
+}
+.cv .cv-skills {
+  list-style: none;
+  padding-left: 0;
+}
+.cv li,
+.cv p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.cv li + li {
+  margin-top: 0.15rem;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 11mm 13mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .cv {
+    font-size: 8.8pt;
+  }
+  .cv section {
+    margin-top: 8pt;
+  }
+  .cv h2 {
+    color: #000;
+    border-color: #000;
+    font-size: 8pt;
+    margin-bottom: 3pt;
+    padding-bottom: 1pt;
+  }
+  .cv h3 {
+    font-size: 9.3pt;
+    margin-top: 4pt;
+  }
+  .cv .cv-dates {
+    color: #000;
+  }
+  .cv li,
+  .cv p {
+    font-size: 8.8pt;
+    line-height: 1.33;
+  }
+  .cv li + li {
+    margin-top: 0;
+  }
+  .cv a {
+    color: #000;
+    text-decoration: none;
+  }
+}
