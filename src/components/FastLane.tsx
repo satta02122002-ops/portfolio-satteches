@@ -26,7 +26,7 @@ export function FastLane() {
       >
         <span className="label mr-2 flex items-center gap-2 text-ok">
           <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-ok" />
-          Open to Assistant Manager roles
+          Open to senior logistics roles
         </span>
         <a href={`mailto:${contact.email}`} className="btn !min-h-10 rounded-full !px-3 text-sm hover:bg-paper" data-track="contact_click" aria-label={`Email ${contact.email}`}>
           <Icon d={icons.mail} />
@@ -51,7 +51,7 @@ export function FastLane() {
       >
         <p className="label flex items-center justify-center gap-2 border-b border-dashed border-line py-1 text-[0.625rem] text-ok">
           <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ok" />
-          Open to Assistant Manager roles
+          Open to senior logistics roles
         </p>
         <div className="flex gap-2 p-2">
           <a href={site.cvPdf} download className="btn btn-primary flex-1 !px-2 text-[0.95rem]" data-track="cv_download">

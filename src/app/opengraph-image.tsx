@@ -29,7 +29,7 @@ export default async function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", background: "#0f1b2d", color: "#f4f1ea", padding: "18px 64px", fontSize: 22, letterSpacing: 3 }}>
-          DXB / JAFZA · STATUS: OPEN TO ASSISTANT MANAGER ROLES
+          DXB / JAFZA · STATUS: OPEN TO SENIOR LOGISTICS ROLES
         </div>
         <div style={{ display: "flex", flexDirection: "column", padding: "56px 64px 0", flex: 1 }}>
           <div style={{ fontFamily: "Archivo", fontSize: 80, fontWeight: 800, letterSpacing: -2, lineHeight: 1 }}>{site.name}</div>

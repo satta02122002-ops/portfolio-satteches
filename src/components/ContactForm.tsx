@@ -52,7 +52,7 @@ export function ContactForm({ company = "" }: { company?: string }) {
         </label>
         <label className="block text-[0.95rem] font-semibold">
           Role you&apos;re hiring for
-          <input name="role" defaultValue={v.role} className={input} placeholder="e.g. Assistant Logistics Manager" />
+          <input name="role" defaultValue={v.role} className={input} placeholder="e.g. Senior Logistics Coordinator" />
         </label>
         <label className="block text-[0.95rem] font-semibold">
           Email <span className="text-accent" aria-hidden="true">*</span>
