@@ -89,7 +89,7 @@ Cloudflare dashboard → **Workers & Pages → Create → Import a repository** 
 
 ### Domains
 
-`wrangler.jsonc` attaches `satteches.com` and `www.satteches.com` as Custom Domains on every deploy, and Cloudflare creates their DNS records and certificates. The `satteches.com` zone must be **Active** in Cloudflare (its nameservers set at your registrar).
+Add `satteches.com` and `www.satteches.com` in the dashboard (Workers & Pages → portfolio-satteches → Domains → Add Domain); Cloudflare creates their DNS records and certificates. The `satteches.com` zone must be **Active** in Cloudflare (its nameservers set at your registrar).
 
 ### Settings
 

@@ -8,15 +8,7 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  "services": [
-    // Self-reference used by OpenNext for caching; must match "name" above.
-    { "binding": "WORKER_SELF_REFERENCE", "service": "portfolio-satteches" }
-  ],
-  "observability": { "enabled": true },
-  // satteches.com and www.satteches.com are served as Custom Domains. Keeping them here
-  // means every deploy keeps both attached (Cloudflare creates the DNS records itself).
-  "routes": [
-    { "pattern": "satteches.com", "custom_domain": true },
-    { "pattern": "www.satteches.com", "custom_domain": true }
-  ]
+  "observability": { "enabled": true }
+  // Custom domains (satteches.com, www.satteches.com) are managed in the dashboard:
+  // Workers & Pages → portfolio-satteches → Domains → Add Domain.
 }
