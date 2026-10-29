@@ -47,8 +47,8 @@ export async function sendContact(_prev: ContactState, form: FormData): Promise<
       method: "POST",
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>",
-        to: [process.env.CONTACT_TO ?? contact.email],
+        from: process.env.CONTACT_FROM || "Portfolio <onboarding@resend.dev>",
+        to: [process.env.CONTACT_TO || contact.email],
         reply_to: email,
         subject: `Portfolio enquiry: ${role || "role"}${company ? ` at ${company}` : ""} (${name})`,
         html,
