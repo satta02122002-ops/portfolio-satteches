@@ -25,7 +25,7 @@ export function Header() {
           <ul className="hidden items-center gap-1 md:flex">
             {nav.map((n) => (
               <li key={n.href}>
-                <Link href={n.href} className="inline-flex min-h-11 items-center rounded px-3 text-[0.95rem] font-medium text-muted hover:text-ink">
+                <Link href={n.href} className="inline-flex min-h-11 items-center rounded px-3 text-[0.95rem] font-semibold text-muted hover:text-ink">
                   {n.label}
                 </Link>
               </li>

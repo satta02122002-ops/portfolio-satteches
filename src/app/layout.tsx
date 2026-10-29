@@ -8,15 +8,17 @@ import "./globals.css";
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
 const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "600"],
   variable: "--font-plex-sans",
   display: "swap",
 });
+// Small labels only: not worth preloading ahead of the headline and body fonts.
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "600"],
   variable: "--font-plex-mono",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

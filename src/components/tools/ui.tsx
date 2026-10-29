@@ -19,7 +19,7 @@ export function NumberField({
   suffix?: string;
 }) {
   return (
-    <label className="block text-[0.9rem] font-medium">
+    <label className="block text-[0.9rem] font-semibold">
       {label}
       {suffix && <span className="font-normal text-muted"> ({suffix})</span>}
       <input

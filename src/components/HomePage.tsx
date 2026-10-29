@@ -9,7 +9,6 @@ import { FocusProvider } from "./HiringFocus";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
-import { MotionProvider } from "./MotionProvider";
 import { ProofStrip } from "./ProofStrip";
 import { RouteTimeline } from "./RouteTimeline";
 import { Skills } from "./Skills";
@@ -19,7 +18,7 @@ import { WaybillStrip } from "./WaybillStrip";
 /** The one-page portfolio. /for/[company] renders the same page with a personalised hero. */
 export function HomePage({ preparedFor, focus = null }: { preparedFor?: string; focus?: Pillar | null }) {
   return (
-    <MotionProvider>
+    <>
       <a href="#main" className="sr-only-focusable fixed left-4 top-4 z-50 rounded bg-ink px-4 py-3 text-paper">
         Skip to content
       </a>
@@ -40,6 +39,6 @@ export function HomePage({ preparedFor, focus = null }: { preparedFor?: string; 
       </FocusProvider>
       <Footer />
       <FastLane />
-    </MotionProvider>
+    </>
   );
 }

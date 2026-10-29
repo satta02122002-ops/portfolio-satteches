@@ -35,7 +35,7 @@ export function RouteTimeline() {
                 </span>
               </div>
               <h3 className="mt-2 font-display text-xl font-bold leading-snug sm:text-2xl">{r.title}</h3>
-              <p className="mt-1 font-medium">
+              <p className="mt-1 font-semibold">
                 {r.company} <span className="text-muted">· {r.place}</span>
               </p>
               <p className="label mt-1 text-muted">{r.dates}</p>

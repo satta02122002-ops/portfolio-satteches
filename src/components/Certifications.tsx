@@ -13,7 +13,7 @@ export function Certifications() {
           <ul className="divide-y divide-dashed divide-line rounded-lg border border-line bg-surface">
             {certifications.map((c) => (
               <li key={c.name} className="flex flex-col gap-0.5 px-5 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <span className="font-medium">{c.name}</span>
+                <span className="font-semibold">{c.name}</span>
                 <span className="label shrink-0 text-muted">{c.issuer}</span>
               </li>
             ))}

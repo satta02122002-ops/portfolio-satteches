@@ -31,7 +31,7 @@ export function Contact({ form }: { form?: React.ReactNode }) {
                     className="group flex min-h-14 items-center justify-between gap-4 px-5 py-3 hover:bg-paper"
                   >
                     <span className="label w-20 shrink-0 text-muted">{c.label}</span>
-                    <span className="flex-1 break-all font-medium group-hover:text-accent">{c.value}</span>
+                    <span className="flex-1 break-all font-semibold group-hover:text-accent">{c.value}</span>
                     <span aria-hidden="true" className="text-accent">→</span>
                   </a>
                 </li>

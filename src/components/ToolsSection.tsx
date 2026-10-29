@@ -4,11 +4,15 @@ import { useId, useRef, useState } from "react";
 import { sections } from "@/content";
 import { track } from "@/lib/analytics";
 import { SectionLabel } from "./SectionLabel";
+import dynamic from "next/dynamic";
 import { ChargeableWeight } from "./tools/ChargeableWeight";
-import { ContainerFit } from "./tools/ContainerFit";
-import { Demurrage } from "./tools/Demurrage";
-import { Incoterms } from "./tools/Incoterms";
-import { Mirsal2Checklist } from "./tools/Mirsal2Checklist";
+
+// Only the first tool ships with the page; the rest load when their tab opens.
+const loading = () => <p className="text-muted">Loading tool…</p>;
+const ContainerFit = dynamic(() => import("./tools/ContainerFit").then((m) => m.ContainerFit), { loading });
+const Demurrage = dynamic(() => import("./tools/Demurrage").then((m) => m.Demurrage), { loading });
+const Incoterms = dynamic(() => import("./tools/Incoterms").then((m) => m.Incoterms), { loading });
+const Mirsal2Checklist = dynamic(() => import("./tools/Mirsal2Checklist").then((m) => m.Mirsal2Checklist), { loading });
 
 const tools = [
   { id: "chargeable", label: "Chargeable weight", Comp: ChargeableWeight },

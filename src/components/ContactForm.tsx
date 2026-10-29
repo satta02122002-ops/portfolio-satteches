@@ -42,24 +42,24 @@ export function ContactForm({ company = "" }: { company?: string }) {
     <form action={action} className="rounded-lg border border-line bg-surface p-5 sm:p-7">
       <p className="label mb-4 text-muted">Booking form · all fields go straight to my inbox</p>
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-[0.95rem] font-medium">
+        <label className="block text-[0.95rem] font-semibold">
           Name <span className="text-accent" aria-hidden="true">*</span>
           <input name="name" required autoComplete="name" defaultValue={v.name} className={input} />
         </label>
-        <label className="block text-[0.95rem] font-medium">
+        <label className="block text-[0.95rem] font-semibold">
           Company
           <input name="company" autoComplete="organization" defaultValue={v.company} className={input} />
         </label>
-        <label className="block text-[0.95rem] font-medium">
+        <label className="block text-[0.95rem] font-semibold">
           Role you&apos;re hiring for
           <input name="role" defaultValue={v.role} className={input} placeholder="e.g. Assistant Logistics Manager" />
         </label>
-        <label className="block text-[0.95rem] font-medium">
+        <label className="block text-[0.95rem] font-semibold">
           Email <span className="text-accent" aria-hidden="true">*</span>
           <input name="email" type="email" required autoComplete="email" defaultValue={v.email} className={input} />
         </label>
       </div>
-      <label className="mt-4 block text-[0.95rem] font-medium">
+      <label className="mt-4 block text-[0.95rem] font-semibold">
         Message <span className="text-accent" aria-hidden="true">*</span>
         <textarea name="message" required rows={5} defaultValue={v.message} className={`${input} resize-y`} />
       </label>
