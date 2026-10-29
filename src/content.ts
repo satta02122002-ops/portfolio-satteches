@@ -45,7 +45,10 @@ export const contact = {
 export const whatsappLink = (text = "Hi Sattanathan, I saw your portfolio at satteches.com.") =>
   contact.whatsapp ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(text)}` : null;
 
-export const waybill = `SATTANATHAN CHANDRAN · DXB / JAFZA · STATUS: OPEN TO ASSISTANT MANAGER ROLES`;
+export const waybill = {
+  full: "SATTANATHAN CHANDRAN · DXB / JAFZA · STATUS: OPEN TO ASSISTANT MANAGER ROLES",
+  short: "DXB / JAFZA · OPEN TO ASST. MANAGER ROLES",
+};
 
 export const hero = {
   eyebrow: "Logistics Coordinator · JAFZA, Dubai",

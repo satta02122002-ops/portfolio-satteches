@@ -88,6 +88,7 @@ body {
   border-radius: 2px;
 }
 
+@layer components {
 /* Pallet-floor grid used behind the proof strip and hero. */
 .bg-grid {
   background-image:
@@ -169,6 +170,7 @@ body {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
 }
 
 @media (prefers-reduced-motion: reduce) {
