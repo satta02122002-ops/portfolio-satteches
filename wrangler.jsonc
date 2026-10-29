@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "satteches-portfolio",
+  "name": "portfolio-satteches",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -10,7 +10,7 @@
   },
   "services": [
     // Self-reference used by OpenNext for caching; must match "name" above.
-    { "binding": "WORKER_SELF_REFERENCE", "service": "satteches-portfolio" }
+    { "binding": "WORKER_SELF_REFERENCE", "service": "portfolio-satteches" }
   ],
   "observability": { "enabled": true }
   // To serve the site on your domain, uncomment once satteches.com no longer

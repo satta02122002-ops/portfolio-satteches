@@ -68,7 +68,7 @@ Check that it is still one page, then commit the PDF.
 
 ## Deploy (Cloudflare Workers)
 
-The site runs on Cloudflare Workers through the [OpenNext adapter](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc` (Worker name `satteches-portfolio`) and `open-next.config.ts`.
+The site runs on Cloudflare Workers through the [OpenNext adapter](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc` (Worker name `portfolio-satteches`) and `open-next.config.ts`.
 
 ### Option A: from your computer
 
@@ -77,7 +77,7 @@ npx wrangler login     # opens the browser, once
 npm run deploy         # builds for Workers and deploys
 ```
 
-The first deploy prints a `https://satteches-portfolio.<your-subdomain>.workers.dev` URL. `npm run preview` runs the same build locally first.
+The first deploy prints a `https://portfolio-satteches.<your-subdomain>.workers.dev` URL. `npm run preview` runs the same build locally first.
 
 ### Option B: auto-deploy on every push (Workers Builds)
 
