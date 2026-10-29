@@ -1,6 +1,7 @@
 import { About } from "@/components/About";
 import { CaseStudies } from "@/components/CaseStudies";
 import { Certifications } from "@/components/Certifications";
+import { ContactForm } from "@/components/ContactForm";
 import { Contact } from "@/components/Contact";
 import { FastLane } from "@/components/FastLane";
 import { Footer } from "@/components/Footer";
@@ -28,7 +29,7 @@ export default function Home() {
         <CaseStudies />
         <Skills />
         <Certifications />
-        <Contact />
+        <Contact form={<ContactForm />} />
       </main>
       <Footer />
       <FastLane />
