@@ -1,10 +1,11 @@
 import { caseStudies, sections, type CaseStudy } from "@/content";
+import { FocusOrder } from "./HiringFocus";
 import { PressStamp } from "./PressStamp";
 import { SectionLabel } from "./SectionLabel";
 
 function CaseCard({ c, i }: { c: CaseStudy; i: number }) {
   return (
-    <li className="flex flex-col rounded-lg border border-line bg-surface">
+    <article className="flex flex-col rounded-lg border border-line bg-surface">
       <div className="flex items-center justify-between gap-3 border-b border-dashed border-line px-5 py-3">
         <span className="label text-muted">Case {String(i + 1).padStart(2, "0")}</span>
         <PressStamp delay={0.05 * i}>{c.stamp}</PressStamp>
@@ -47,7 +48,7 @@ function CaseCard({ c, i }: { c: CaseStudy; i: number }) {
           ))}
         </ul>
       </div>
-    </li>
+    </article>
   );
 }
 
@@ -59,11 +60,10 @@ export function CaseStudies({ items = caseStudies }: { items?: CaseStudy[] }) {
         <h2 id="cases-title" className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
           Problems solved, with the receipts.
         </h2>
-        <ul className="mt-8 grid gap-5 md:grid-cols-2">
-          {items.map((c, i) => (
-            <CaseCard key={c.id} c={c} i={i} />
-          ))}
-        </ul>
+        <FocusOrder
+          className="mt-8 grid gap-5 md:grid-cols-2"
+          items={items.map((c, i) => ({ key: c.id, pillars: c.pillars, node: <CaseCard c={c} i={i} /> }))}
+        />
       </div>
     </section>
   );
