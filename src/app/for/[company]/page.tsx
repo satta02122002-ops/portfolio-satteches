@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: name ? `Prepared for ${name}` : "Not found",
     robots: { index: false, follow: false },
     alternates: { canonical: "/" },
-    openGraph: { title: name ? `${site.name}, prepared for ${name}` : site.title },
   };
 }
 
