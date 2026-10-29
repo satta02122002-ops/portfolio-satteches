@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "satteches-portfolio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    // Self-reference used by OpenNext for caching; must match "name" above.
+    { "binding": "WORKER_SELF_REFERENCE", "service": "satteches-portfolio" }
+  ],
+  "observability": { "enabled": true }
+  // To serve the site on your domain, uncomment once satteches.com no longer
+  // points at the old site (remove its old A/CNAME records in Cloudflare DNS first):
+  // ,"routes": [
+  //   { "pattern": "satteches.com", "custom_domain": true },
+  //   { "pattern": "www.satteches.com", "custom_domain": true }
+  // ]
+}

@@ -2,7 +2,7 @@
 
 Portfolio of Sattanathan Chandran, Logistics Coordinator in JAFZA, Dubai. Built to the brief in [`docs/BLUEPRINT.md`](docs/BLUEPRINT.md): a proof-first page for UAE logistics recruiters, in a "manifest" design.
 
-**Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS 4, `next/font`. No animation library: the counters, stamps and route line use a small IntersectionObserver hook (`src/lib/useReveal.ts`) and CSS, and respect `prefers-reduced-motion`.
+**Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS 4, `next/font`, deployed to Cloudflare Workers. No animation library: the counters, stamps and route line use a small IntersectionObserver hook (`src/lib/useReveal.ts`) and CSS, and respect `prefers-reduced-motion`.
 
 ## Run it
 
@@ -31,7 +31,7 @@ Every word and number lives in **`src/content.ts`**. Components only render what
 
 Open `TODO` comments in `src/content.ts` mark the bracketed details from the blueprint that only you can fill (WhatsApp number, optional case-study method lines).
 
-The headshot is `public/images/sattanathan-chandran.jpg`; replace the file to change it.
+The headshot is `public/images/sattanathan-chandran.webp`; replace the file to change it.
 
 ### Add a case study
 
@@ -66,13 +66,40 @@ Check that it is still one page, then commit the PDF.
 
 `https://satteches.com/for/<company-slug>` shows "Prepared for <Company>" in the hero and pre-fills the company in the contact form. Add `?focus=freight|customs|warehouse|sap` to put the matching results first, for example `/for/dp-world?focus=customs`. These pages are `noindex`.
 
-## Deploy (Vercel)
+## Deploy (Cloudflare Workers)
 
-1. Import the repository in Vercel. The defaults work (framework: Next.js).
-2. Add the environment variables from `.env.example` that you need:
-   - `RESEND_API_KEY`, `CONTACT_FROM` (a sender on a domain verified in Resend), optional `CONTACT_TO`. Without a key, the contact form keeps the message and offers a prefilled email instead.
-   - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=satteches.com` to turn on cookie-free analytics. Events tracked: `cv_download`, `contact_click`, `whatsapp_click`, `linkedin_click`, `contact_form_sent`, `hiring_for`, `tool_open` and `for_visit` (with the company name). In Plausible, add these as custom goals to see them.
-3. Point the `satteches.com` domain at the project (Vercel → Settings → Domains). If DNS is on Cloudflare, use DNS-only (grey cloud) records or Vercel's recommended setup.
+The site runs on Cloudflare Workers through the [OpenNext adapter](https://opennext.js.org/cloudflare). Config: `wrangler.jsonc` (Worker name `satteches-portfolio`) and `open-next.config.ts`.
+
+### Option A: from your computer
+
+```bash
+npx wrangler login     # opens the browser, once
+npm run deploy         # builds for Workers and deploys
+```
+
+The first deploy prints a `https://satteches-portfolio.<your-subdomain>.workers.dev` URL. `npm run preview` runs the same build locally first.
+
+### Option B: auto-deploy on every push (Workers Builds)
+
+Cloudflare dashboard → **Workers & Pages → Create → Import a repository** → pick `satta02122002-ops/portfolio-satteches`, then set:
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx opennextjs-cloudflare deploy`
+- Branch: the branch you want live
+
+### Put it on satteches.com
+
+1. In Cloudflare DNS for `satteches.com`, delete the old `A` / `CNAME` records for `@` and `www` that point at the previous site.
+2. Uncomment the `routes` block at the bottom of `wrangler.jsonc` and deploy again. Cloudflare creates the DNS records and certificate.
+
+### Settings
+
+- **Contact form:** `npx wrangler secret put RESEND_API_KEY`, plus `CONTACT_FROM` (a sender on a domain verified in Resend) and optionally `CONTACT_TO`, set as variables in the Worker's Settings. Without a key the form keeps the message and offers a prefilled email instead.
+- **Analytics:** `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=satteches.com` is read at build time, so set it as a build variable (Workers Builds) or in `.env.production` before `npm run deploy`. Events: `cv_download`, `contact_click`, `whatsapp_click`, `linkedin_click`, `contact_form_sent`, `hiring_for`, `tool_open`, `for_visit`. Add them as custom goals in Plausible.
+
+### Social preview image
+
+`public/og.png` is a static file (Workers can't read font files at runtime). After changing your name, role or headline numbers, run `npm run og` and commit the new image.
 
 ## Structure
 
@@ -82,7 +109,7 @@ src/app/page.tsx             home → components/HomePage.tsx
 src/app/cv/                  ATS-friendly CV and print stylesheet
 src/app/for/[company]/       personalised recruiter links
 src/app/actions/contact.ts   contact form server action (Resend, honeypot, rate limit)
-src/app/opengraph-image.tsx  1200×630 social preview
+scripts/generate-og.mjs      renders public/og.png (social preview)
 src/components/              sections, fast lane, hiring-for selector
 src/components/tools/        freight mini-tools and Mirsal 2 checklist
 scripts/generate-cv-pdf.mjs  renders /cv to the PDF

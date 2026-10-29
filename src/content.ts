@@ -21,7 +21,7 @@ export const site = {
   asOf: "Oct 2026",
   replyTime: "within one working day",
   cvPdf: "/Sattanathan-Chandran-CV.pdf",
-  photo: "/images/sattanathan-chandran.jpg",
+  photo: "/images/sattanathan-chandran.webp",
   keywords: [
     "logistics coordinator Dubai",
     "freight forwarding JAFZA",
