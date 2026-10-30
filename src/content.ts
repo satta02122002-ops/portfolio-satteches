@@ -37,9 +37,10 @@ export const contact = {
   linkedinLabel: "linkedin.com/in/sat-logistics",
   github: "https://github.com/satta02122002-ops",
   githubLabel: "satta02122002-ops",
-  // TODO: add your WhatsApp number in international format without spaces or "+", e.g. "9715XXXXXXXX".
-  // While empty, every WhatsApp button is hidden.
-  whatsapp: "",
+  phone: "+971 54 548 9402",
+  phoneHref: "tel:+971545489402",
+  // International format without spaces or "+". Leave empty to hide every WhatsApp button.
+  whatsapp: "971545489402",
 };
 
 export const whatsappLink = (text = "Hi Sattanathan, I saw your portfolio at satteches.com.") =>

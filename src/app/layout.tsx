@@ -55,6 +55,7 @@ const personJsonLd = {
   image: `${site.url}${site.photo}`,
   jobTitle: site.role,
   email: `mailto:${contact.email}`,
+  telephone: contact.phone,
   worksFor: { "@type": "Organization", name: site.employer },
   workLocation: { "@type": "Place", name: "Jebel Ali Free Zone (JAFZA), Dubai, United Arab Emirates" },
   address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },

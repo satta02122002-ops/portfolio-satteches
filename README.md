@@ -24,7 +24,7 @@ Every word and number lives in **`src/content.ts`**. Components only render what
 | "Zero customs holds as of …" date | `site.asOf` |
 | Reply time on the contact section | `site.replyTime` |
 | Email, LinkedIn, GitHub | `contact` |
-| WhatsApp buttons | `contact.whatsapp`: international format, digits only, e.g. `9715XXXXXXXX`. Buttons stay hidden while it is empty. |
+| Mobile and WhatsApp | `contact.phone` (shown), `contact.phoneHref` (tap-to-call) and `contact.whatsapp` (digits only; empty hides WhatsApp buttons) |
 | Experience timeline | `experience`, plus `nextStop` for the final open milestone |
 | Skills, certifications, awards, education | `skills`, `certifications`, `awards`, `education` |
 | "I'm hiring for…" pitches | `hiringFor` |
@@ -94,7 +94,7 @@ Add `satteches.com` and `www.satteches.com` in the dashboard (Workers & Pages �
 ### Settings
 
 - **Contact form:** `npx wrangler secret put RESEND_API_KEY`, plus `CONTACT_FROM` (a sender on a domain verified in Resend) and optionally `CONTACT_TO`, set as variables in the Worker's Settings. Without a key the form keeps the message and offers a prefilled email instead.
-- **Analytics:** `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=satteches.com` is read at build time, so set it as a build variable (Workers Builds) or in `.env.production` before `npm run deploy`. Events: `cv_download`, `contact_click`, `whatsapp_click`, `linkedin_click`, `contact_form_sent`, `hiring_for`, `tool_open`, `for_visit`. Add them as custom goals in Plausible.
+- **Analytics:** `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=satteches.com` is read at build time, so set it as a build variable (Workers Builds) or in `.env.production` before `npm run deploy`. Events: `cv_download`, `contact_click`, `phone_click`, `whatsapp_click`, `linkedin_click`, `contact_form_sent`, `hiring_for`, `tool_open`, `for_visit`. Add them as custom goals in Plausible.
 
 ### Social preview image
 

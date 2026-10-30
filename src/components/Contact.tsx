@@ -5,8 +5,9 @@ export function Contact({ form }: { form?: React.ReactNode }) {
   const wa = whatsappLink();
   const channels = [
     { label: "Email", value: contact.email, href: `mailto:${contact.email}`, track: "contact_click" },
+    { label: "Mobile", value: contact.phone, href: contact.phoneHref, track: "phone_click" },
     { label: "LinkedIn", value: contact.linkedinLabel, href: contact.linkedin, track: "linkedin_click" },
-    ...(wa ? [{ label: "WhatsApp", value: "Chat on WhatsApp", href: wa, track: "whatsapp_click" }] : []),
+    ...(wa ? [{ label: "WhatsApp", value: `${contact.phone} (chat)`, href: wa, track: "whatsapp_click" }] : []),
     { label: "CV", value: "Download CV (PDF)", href: site.cvPdf, track: "cv_download", download: true },
   ];
 
