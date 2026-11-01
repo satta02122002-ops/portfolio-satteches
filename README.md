@@ -1,6 +1,6 @@
 # satteches.com
 
-Portfolio of Sattanathan Chandran, Logistics Coordinator in JAFZA, Dubai. Built to the brief in [`docs/BLUEPRINT.md`](docs/BLUEPRINT.md): a proof-first page for UAE logistics recruiters, in a "manifest" design.
+Portfolio of Sattanathan Chandran, Logistics Coordinator in JAFZA, Dubai. Built to the brief in [`docs/BLUEPRINT.md`](docs/BLUEPRINT.md): a proof-first page for UAE logistics recruiters, laid out as a logistics "control tower" dashboard: sidebar modules, KPI panels, a shipment-style career tracker, case files, a warehouse-rack skills map and freight tools.
 
 **Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS 4, `next/font`, deployed to Cloudflare Workers. No animation library: the counters, stamps and route line use a small IntersectionObserver hook (`src/lib/useReveal.ts`) and CSS, and respect `prefers-reduced-motion`.
 
@@ -28,6 +28,9 @@ Every word and number lives in **`src/content.ts`**. Components only render what
 | Experience timeline | `experience`, plus `nextStop` for the final open milestone |
 | Skills, certifications, awards, education | `skills`, `certifications`, `awards`, `education` |
 | "I'm hiring for…" pitches | `hiringFor` |
+| Overview KPI tiles | `headlineKpis` |
+| Dashboard meters, before→after charts, scale figures | `meters`, `beforeAfter`, `scope`, `customsDocs` |
+| Module names, order and icons (sidebar) | `sections` |
 
 Open `TODO` comments in `src/content.ts` mark the bracketed details from the blueprint that only you can fill (WhatsApp number, optional case-study method lines).
 
@@ -109,7 +112,8 @@ src/app/cv/                  ATS-friendly CV and print stylesheet
 src/app/for/[company]/       personalised recruiter links
 src/app/actions/contact.ts   contact form server action (Resend, honeypot, rate limit)
 scripts/generate-og.mjs      renders public/og.png (social preview)
-src/components/              sections, fast lane, hiring-for selector
+src/components/              AppShell (sidebar, status bar, module nav), one component per module
+src/components/viz/          stat tile, meter and before→after charts (inline SVG/CSS, no chart library)
 src/components/tools/        freight mini-tools and Mirsal 2 checklist
 scripts/generate-cv-pdf.mjs  renders /cv to the PDF
 ```

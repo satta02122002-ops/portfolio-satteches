@@ -51,6 +51,14 @@ export const waybill = {
   short: "DXB / JAFZA · OPEN TO SENIOR ROLES",
 };
 
+/** Headline KPIs on the overview, in recruiter priority order. */
+export const headlineKpis = [
+  { label: "Inventory accuracy", value: "99.8%", delta: "+0.3 pts vs 2022", status: "Accurate", icon: "gauge" },
+  { label: "Stock clearance time", value: "20 min", delta: "Down from ~3 hrs (−89%)", status: "Automated", icon: "cpu" },
+  { label: "Customs holds", value: "0", delta: `Mirsal 2 clearances, as of ${site.asOf}`, status: "Cleared", icon: "shield" },
+  { label: "On-time delivery", value: "98%", delta: "Material supply to production", status: "On time", icon: "clock" },
+] as const;
+
 export const hero = {
   eyebrow: "Logistics Coordinator · JAFZA, Dubai",
   h1: "I make freight, customs and warehouse operations faster and more accurate.",
@@ -70,6 +78,8 @@ export type Proof = {
   prefix?: string;
   suffix?: string;
   display: string;
+  /** Short stat-tile title. */
+  title: string;
   label: string;
   stamp: "ACCURATE" | "ON TIME" | "CLEARED";
   pillars: Pillar[];
@@ -81,6 +91,7 @@ export const proof: Proof[] = [
     decimals: 1,
     suffix: "%",
     display: "99.8%",
+    title: "Inventory accuracy",
     label: "Inventory accuracy by count and value (2023). Management discontinued the wall-to-wall count.",
     stamp: "ACCURATE",
     pillars: ["warehouse", "sap"],
@@ -90,6 +101,7 @@ export const proof: Proof[] = [
     prefix: "3 hrs → ",
     suffix: " min",
     display: "3 hrs → 20 min",
+    title: "Negative-stock clearance",
     label: "Daily negative-stock clearance, 89% faster, with an Excel VBA macro.",
     stamp: "ON TIME",
     pillars: ["sap", "warehouse"],
@@ -97,7 +109,8 @@ export const proof: Proof[] = [
   {
     to: null,
     display: "Zero",
-    label: `Customs-hold incidents on Mirsal 2 clearances, as of ${site.asOf}.`,
+    title: "Customs holds",
+        label: `Customs-hold incidents on Mirsal 2 clearances, as of ${site.asOf}.`,
     stamp: "CLEARED",
     pillars: ["customs", "freight"],
   },
@@ -105,6 +118,7 @@ export const proof: Proof[] = [
     to: 99,
     suffix: "%+",
     display: "99%+",
+    title: "WMS-to-physical accuracy",
     label: "WMS-to-physical stock accuracy, with 15% fewer discrepancies.",
     stamp: "ACCURATE",
     pillars: ["warehouse", "freight"],
@@ -113,6 +127,7 @@ export const proof: Proof[] = [
     to: 98,
     suffix: "%",
     display: "98%",
+    title: "On-time delivery",
     label: "On-time material delivery to production cells.",
     stamp: "ON TIME",
     pillars: ["warehouse"],
@@ -121,11 +136,37 @@ export const proof: Proof[] = [
     to: 20,
     suffix: "%",
     display: "20%",
-    label: "Picking time saved through a 5S location redesign.",
+    title: "Picking time saved",
+        label: "Picking time saved through a 5S location redesign.",
     stamp: "ON TIME",
     pillars: ["warehouse"],
   },
 ];
+
+/** Accuracy metrics drawn as meters against 100%. */
+export const meters: { label: string; value: number; display: string; note: string }[] = [
+  { label: "Inventory accuracy, count and value (2023)", value: 99.8, display: "99.8%", note: "Up from 99.5% in 2022" },
+  { label: "WMS-to-physical stock accuracy", value: 99, display: "99%+", note: "15% fewer discrepancies" },
+  { label: "On-time material delivery to production", value: 98, display: "98%", note: "Picking lists, kitting, shortage follow-up" },
+];
+
+/** Before → after improvements, each on its own scale (small multiples, never one shared axis). */
+export const beforeAfter: { label: string; unit: string; before: number; after: number; beforeLabel: string; afterLabel: string; change: string }[] = [
+  { label: "Daily negative-stock clearance", unit: "minutes", before: 180, after: 20, beforeLabel: "~180 min", afterLabel: "20 min", change: "−89%" },
+  { label: "Picking time after 5S redesign", unit: "indexed, before = 100", before: 100, after: 80, beforeLabel: "100", afterLabel: "80", change: "−20%" },
+  { label: "WMS stock discrepancies", unit: "indexed, before = 100", before: 100, after: 85, beforeLabel: "100", afterLabel: "85", change: "−15%" },
+];
+
+/** Scale of operations, shown as plain figures. */
+export const scope: { icon: "barcode" | "users" | "globe" | "clock"; value: string; label: string }[] = [
+  { icon: "barcode", value: "12,000+", label: "materials managed in SAP S/4HANA" },
+  { icon: "users", value: "300+", label: "employees across 13 teams in an engagement programme I led" },
+  { icon: "globe", value: "3", label: "freight modes coordinated: sea, air and road" },
+  { icon: "clock", value: "6 yrs", label: "across freight forwarding, 3PL and manufacturing logistics" },
+];
+
+/** Documents prepared per Mirsal 2 clearance (from the CV). */
+export const customsDocs = ["Commercial invoice", "Packing list", "Bill of Entry", "Certificate of Origin", "ASN / GRN"];
 
 export const pillars = [
   {
@@ -234,11 +275,14 @@ export type CaseStudy = {
   tools: string[];
   stamp: Proof["stamp"];
   pillars: Pillar[];
+  /** Headline before → after shown on the case file. */
+  kpi: { label: string; before?: string; after: string };
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     id: "negative-stock",
+    kpi: { label: "Daily clearance time", before: "~3 hrs", after: "20 min" },
     title: "From 3 hours to 20 minutes: automating negative-stock clearance",
     problem: "Clearing negative stock in SAP took about 3 hours of manual work every day.",
     // TODO: add one line on how the macro works (what it reads and what it outputs).
@@ -250,6 +294,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "inventory-accuracy",
+    kpi: { label: "Inventory accuracy", before: "99.5%", after: "99.8%" },
     title: "99.8% inventory accuracy without the wall-to-wall count",
     problem:
       "Inventory accuracy was 99.5% in 2022, and a full wall-to-wall count was still being used to verify stock.",
@@ -263,6 +308,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "zero-holds",
+    kpi: { label: "Customs-hold incidents", after: "0" },
     title: "Zero customs holds on Mirsal 2",
     problem: "Customs holds delay cargo, add demurrage risk and damage client trust.",
     // TODO: optionally add your own pre-submission checks (e.g. HS code and value consistency).
@@ -275,6 +321,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "5s-picking",
+    kpi: { label: "Picking time", before: "100%", after: "80%" },
     title: "20% faster picking with a 5S location redesign",
     problem: "Supplying production cells on time depended on fast, accurate picking.",
     action: "Reorganised destination locations under 5S and kept picking lists and project-specific kitting accurate.",
@@ -392,15 +439,15 @@ export const hiringFor: { id: Pillar; label: string; pitch: string }[] = [
 
 /** Section labels in manifest style. */
 export const sections = {
-  hero: { n: "01", label: "Hero" },
-  proof: { n: "02", label: "Proof" },
-  about: { n: "03", label: "About" },
-  experience: { n: "04", label: "Experience" },
-  cases: { n: "05", label: "Case studies" },
-  skills: { n: "06", label: "Skills & systems" },
-  tools: { n: "07", label: "Tools I built" },
-  certs: { n: "08", label: "Certifications" },
-  contact: { n: "09", label: "Contact" },
-};
+  hero: { n: "01", label: "Overview", id: "overview", icon: "overview" },
+  proof: { n: "02", label: "KPI dashboard", id: "dashboard", icon: "kpi" },
+  about: { n: "03", label: "Operator profile", id: "profile", icon: "profile" },
+  experience: { n: "04", label: "Career tracking", id: "experience", icon: "route" },
+  cases: { n: "05", label: "Case files", id: "cases", icon: "cases" },
+  skills: { n: "06", label: "Capability rack", id: "skills", icon: "rack" },
+  tools: { n: "07", label: "Ops toolkit", id: "tools", icon: "tools" },
+  certs: { n: "08", label: "Compliance register", id: "certifications", icon: "certs" },
+  contact: { n: "09", label: "Dispatch desk", id: "contact", icon: "contact" },
+} as const;
 
 export const footer = `© 2026 Sattanathan Chandran · Dubai, UAE`;

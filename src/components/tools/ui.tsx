@@ -1,7 +1,7 @@
 "use client";
 
 export const fieldClass =
-  "mt-1 block w-full min-h-11 rounded-md border border-line bg-paper px-3 py-2 text-ink tabular-nums focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent";
+  "mt-1 block w-full min-h-11 rounded-lg border border-line bg-surface px-3 py-2 text-ink tabular-nums focus:border-primary focus:outline-none focus-visible:outline-2 focus-visible:outline-primary";
 
 export function NumberField({
   label,
@@ -39,7 +39,7 @@ export function Result({ label, value, strong }: { label: string; value: string;
   return (
     <div className="flex items-baseline justify-between gap-4 py-2">
       <dt className="text-[0.95rem] text-muted">{label}</dt>
-      <dd className={`tabular-nums ${strong ? "font-display text-2xl font-extrabold text-accent" : "font-semibold"}`}>{value}</dd>
+      <dd className={`tabular-nums ${strong ? "font-display text-2xl font-bold text-primary" : "font-semibold"}`}>{value}</dd>
     </div>
   );
 }

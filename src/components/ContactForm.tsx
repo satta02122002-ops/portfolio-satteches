@@ -6,7 +6,7 @@ import { contact, contactCopy } from "@/content";
 import { track } from "@/lib/analytics";
 
 const input =
-  "mt-1.5 block w-full rounded-md border border-line bg-paper px-3 py-2.5 text-ink placeholder:text-muted/70 focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-accent min-h-11";
+  "mt-1.5 block w-full rounded-md border border-line bg-surface px-3 py-2.5 text-ink placeholder:text-muted/70 focus:border-primary focus:outline-none focus-visible:outline-2 focus-visible:outline-primary min-h-11";
 
 type Values = Record<"name" | "company" | "role" | "email" | "message", string>;
 
@@ -31,16 +31,16 @@ export function ContactForm({ company = "" }: { company?: string }) {
 
   if (state.status === "ok") {
     return (
-      <div role="status" className="flex flex-col items-start justify-center gap-4 rounded-lg border border-line bg-surface p-8">
-        <span className="stamp">✓ RECEIVED</span>
+      <div role="status" className="panel flex flex-col items-start justify-center gap-4 p-8">
+        <span className="chip chip-ok">✓ Received</span>
         <p className="font-display text-2xl font-bold">{contactCopy.success}</p>
       </div>
     );
   }
 
   return (
-    <form action={action} className="rounded-lg border border-line bg-surface p-5 sm:p-7">
-      <p className="label mb-4 text-muted">Booking form · all fields go straight to my inbox</p>
+    <form action={action} className="panel p-5 sm:p-6">
+      <p className="label mb-4 text-muted">Dispatch request · goes straight to my inbox</p>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-[0.95rem] font-semibold">
           Name <span className="text-accent" aria-hidden="true">*</span>
@@ -81,7 +81,7 @@ export function ContactForm({ company = "" }: { company?: string }) {
       </div>
       <div aria-live="polite" className="mt-4 empty:hidden">
         {state.status === "error" && (
-          <p className="rounded-md border border-accent/50 px-4 py-3 text-[0.95rem]">
+          <p className="rounded-lg border border-accent/50 px-4 py-3 text-[0.95rem]">
             {state.message}{" "}
             {state.fallback && (
               <button

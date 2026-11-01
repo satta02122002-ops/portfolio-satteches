@@ -3,7 +3,8 @@
 import { useId, useRef, useState } from "react";
 import { sections } from "@/content";
 import { track } from "@/lib/analytics";
-import { SectionLabel } from "./SectionLabel";
+import { Icon, type IconName } from "./Icon";
+import { Section } from "./Section";
 import dynamic from "next/dynamic";
 import { ChargeableWeight } from "./tools/ChargeableWeight";
 
@@ -14,12 +15,12 @@ const Demurrage = dynamic(() => import("./tools/Demurrage").then((m) => m.Demurr
 const Incoterms = dynamic(() => import("./tools/Incoterms").then((m) => m.Incoterms), { loading });
 const Mirsal2Checklist = dynamic(() => import("./tools/Mirsal2Checklist").then((m) => m.Mirsal2Checklist), { loading });
 
-const tools = [
-  { id: "chargeable", label: "Chargeable weight", Comp: ChargeableWeight },
-  { id: "cbm", label: "CBM & container fit", Comp: ContainerFit },
-  { id: "demurrage", label: "Demurrage cost", Comp: Demurrage },
-  { id: "incoterms", label: "Incoterms 2020", Comp: Incoterms },
-  { id: "mirsal", label: "Mirsal 2 checklist", Comp: Mirsal2Checklist },
+const tools: { id: string; label: string; icon: IconName; Comp: React.ComponentType }[] = [
+  { id: "chargeable", label: "Chargeable weight", icon: "plane", Comp: ChargeableWeight },
+  { id: "cbm", label: "CBM & container fit", icon: "boxes", Comp: ContainerFit },
+  { id: "demurrage", label: "Demurrage cost", icon: "calc", Comp: Demurrage },
+  { id: "incoterms", label: "Incoterms 2020", icon: "globe", Comp: Incoterms },
+  { id: "mirsal", label: "Mirsal 2 checklist", icon: "shield", Comp: Mirsal2Checklist },
 ];
 
 export function ToolsSection() {
@@ -43,18 +44,13 @@ export function ToolsSection() {
   }
 
   return (
-    <section id="tools" aria-labelledby="tools-title" className="border-b border-line bg-surface/40">
-      <div className="mx-auto max-w-[1120px] px-4 py-14 sm:px-6 md:py-20">
-        <SectionLabel {...sections.tools} />
-        <h2 id="tools-title" className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Tools I built
-        </h2>
-        <p className="mt-3 max-w-[42rem] text-muted">
-          Small, practical freight tools, the same kind of thing I build to remove manual work. All results are
-          illustrative estimates, not quotes.
-        </p>
-
-        <div role="tablist" aria-label="Freight tools" className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+    <Section
+      module={sections.tools}
+      title="Ops toolkit"
+      intro="Small, practical freight tools, the same kind of thing I build to remove manual work. All results are illustrative estimates, not quotes."
+    >
+      <div className="panel overflow-hidden">
+        <div role="tablist" aria-label="Freight tools" className="scroll-x flex gap-1 overflow-x-auto border-b border-line bg-surface-2 p-2">
           {tools.map((t, i) => (
             <button
               key={t.id}
@@ -68,10 +64,11 @@ export function ToolsSection() {
               tabIndex={i === active ? 0 : -1}
               onClick={() => select(i)}
               onKeyDown={(e) => onKey(e, i)}
-              className={`min-h-11 shrink-0 rounded-full border px-4 text-[0.95rem] font-semibold ${
-                i === active ? "border-accent bg-accent text-accent-ink" : "border-line bg-surface hover:border-ink"
+              className={`inline-flex min-h-11 shrink-0 items-center gap-2 rounded-lg px-3.5 text-[0.92rem] font-semibold ${
+                i === active ? "bg-surface text-primary shadow-[var(--shadow)]" : "text-muted hover:text-ink"
               }`}
             >
+              <Icon name={t.icon} size={16} />
               {t.label}
             </button>
           ))}
@@ -81,11 +78,11 @@ export function ToolsSection() {
           id={`${base}-panel`}
           aria-labelledby={`${base}-tab-${tools[active].id}`}
           tabIndex={0}
-          className="mt-4 rounded-lg border border-line bg-surface p-4 sm:p-6"
+          className="p-4 sm:p-6"
         >
           <Active />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

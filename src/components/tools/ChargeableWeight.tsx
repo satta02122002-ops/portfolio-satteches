@@ -28,7 +28,7 @@ export function ChargeableWeight() {
         <NumberField label="Volumetric divisor" value={divisor} onChange={setDivisor} step="1" min={1} />
       </div>
       <div>
-        <dl className="divide-y divide-dashed divide-line rounded-lg border border-line bg-paper px-4">
+        <dl className="divide-y divide-dashed divide-line rounded-lg border border-line bg-surface-2 px-4">
           <Result label="Total volume" value={`${fmt(cbm, 3)} CBM`} />
           <Result label="Actual weight" value={`${fmt(actual)} kg`} />
           <Result label="Volumetric weight" value={`${fmt(volumetric)} kg`} />

@@ -19,9 +19,9 @@ export function HiringForSelector() {
   const { focus, setFocus } = useContext(FocusContext);
   const active = hiringFor.find((h) => h.id === focus);
   return (
-    <div className="mt-6 rounded-lg border border-line bg-surface p-4 sm:p-5">
+    <div className="panel p-4 sm:p-5">
       <fieldset>
-        <legend className="label text-muted">I&apos;m hiring for…</legend>
+        <legend className="label text-muted">Filter · I&apos;m hiring for…</legend>
         <div className="mt-3 flex flex-wrap gap-2">
           {hiringFor.map((h) => {
             const on = h.id === focus;
@@ -35,7 +35,7 @@ export function HiringForSelector() {
                   if (!on) track("hiring_for", { focus: h.id });
                 }}
                 className={`min-h-11 rounded-full border px-4 text-[0.95rem] font-semibold transition-colors ${
-                  on ? "border-ink bg-ink text-paper" : "border-line text-ink hover:border-ink"
+                  on ? "border-primary bg-primary text-primary-ink" : "border-line bg-surface text-ink hover:border-ink"
                 }`}
               >
                 {h.label}
@@ -50,7 +50,7 @@ export function HiringForSelector() {
             <span className="font-semibold text-ink">{active.label}:</span> {active.pitch} Matching results are shown first.
           </>
         ) : (
-          "Pick what you're hiring for and the most relevant results move to the front."
+          "Pick what you're hiring for: matching case files and capabilities move to the front and are outlined."
         )}
       </p>
     </div>
@@ -66,7 +66,7 @@ export function FocusOrder({ items, as: Tag = "ul", className }: { items: { key:
   return (
     <Tag className={className}>
       {sorted.map((i) => (
-        <li key={i.key} className={`flex [&>*]:w-full ${focus && i.pillars.includes(focus) ? "[&>*]:outline-2 [&>*]:outline-offset-2 [&>*]:outline-accent [&>*]:outline-solid" : ""}`}>
+        <li key={i.key} className={`flex [&>*]:w-full ${focus && i.pillars.includes(focus) ? "[&>*]:outline-2 [&>*]:outline-offset-2 [&>*]:outline-primary [&>*]:outline-solid" : ""}`}>
           {i.node}
         </li>
       ))}

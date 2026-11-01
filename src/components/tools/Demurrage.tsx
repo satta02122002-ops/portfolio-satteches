@@ -28,7 +28,7 @@ export function Demurrage() {
         <NumberField label="Tier 1 length" suffix="days" value={tier1Days} onChange={setTier1Days} step="1" />
         <NumberField label="Tier 2 rate" suffix="AED/day" value={rate2} onChange={setRate2} />
       </div>
-      <dl className="h-fit divide-y divide-dashed divide-line rounded-lg border border-line bg-paper px-4">
+      <dl className="h-fit divide-y divide-dashed divide-line rounded-lg border border-line bg-surface-2 px-4">
         <Result label="Chargeable days" value={`${over}`} />
         <Result label="Tier 1 / Tier 2 days" value={`${d1} / ${d2}`} />
         <Result label="Per container" value={`AED ${fmt(perBox, 0)}`} />

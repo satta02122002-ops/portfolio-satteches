@@ -31,7 +31,7 @@ export function ContainerFit() {
         <NumberField label="Weight / carton" suffix="kg" value={kg} onChange={setKg} />
       </div>
       <div>
-        <dl className="divide-y divide-dashed divide-line rounded-lg border border-line bg-paper px-4">
+        <dl className="divide-y divide-dashed divide-line rounded-lg border border-line bg-surface-2 px-4">
           <Result label="Total volume" value={`${fmt(cbm, 2)} CBM`} strong />
           <Result label="Total weight" value={`${fmt(weight, 0)} kg`} />
         </dl>
@@ -43,7 +43,7 @@ export function ContainerFit() {
             const count = Math.max(1, Math.ceil(fill));
             const pct = Math.min(100, (fill / count) * 100);
             return (
-              <li key={c.name} className="rounded-md border border-line bg-paper px-3 py-2">
+              <li key={c.name} className="rounded-lg border border-line bg-surface-2 px-3 py-2">
                 <div className="flex items-baseline justify-between gap-3 text-[0.95rem]">
                   <span className="font-semibold">{c.name}</span>
                   <span className="tabular-nums">

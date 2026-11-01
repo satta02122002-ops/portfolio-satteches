@@ -3,6 +3,7 @@ import { site } from "@/content";
 import { ThemeToggle } from "./ThemeToggle";
 
 const nav = [
+  { href: "/#dashboard", label: "KPIs" },
   { href: "/#experience", label: "Experience" },
   { href: "/#cases", label: "Case studies" },
   { href: "/#tools", label: "Tools" },
@@ -12,10 +13,10 @@ const nav = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/75 print:hidden">
+    <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur print:hidden">
       <div className="mx-auto flex h-16 max-w-[1120px] items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex min-h-11 items-center gap-2 font-display text-lg font-extrabold tracking-tight">
-          <span aria-hidden="true" className="inline-flex h-8 w-8 items-center justify-center rounded bg-ink text-sm text-paper">
+        <Link href="/" className="flex min-h-11 items-center gap-2 font-display text-lg font-bold tracking-tight">
+          <span aria-hidden="true" className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-ink text-sm text-paper">
             {site.initials}
           </span>
           <span className="hidden sm:inline">{site.name}</span>

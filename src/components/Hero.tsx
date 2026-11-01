@@ -1,79 +1,129 @@
-import { contact, hero, site } from "@/content";
-import { StampChip } from "./StampChip";
+import Image from "next/image";
+import { about, contact, experience, headlineKpis, hero, sections, site, whatsappLink } from "@/content";
+import { Icon } from "./Icon";
+import { StatTile } from "./viz/StatTile";
 
-const stamps = ["ACCURATE", "ON TIME", "CLEARED"];
-
+/** Module 01 · Overview: who, what, proof and the two actions a recruiter needs. */
 export function Hero({ preparedFor }: { preparedFor?: string }) {
+  const wa = whatsappLink();
+  const current = experience.find((r) => r.current);
+  const facts = about.facts.filter((f) => f.k !== "Education");
   return (
-    <section aria-labelledby="hero-title" className="bg-grid border-b border-line">
-      <div className="mx-auto grid max-w-[1120px] gap-10 px-4 pb-12 pt-7 sm:px-6 md:pt-16 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-14 lg:pb-20">
-        <div>
+    <section id={sections.hero.id} aria-labelledby="hero-title" className="scroll-mt-28 pt-6 md:pt-10">
+      <div className="grid items-start gap-5 lg:grid-cols-[1.55fr_1fr]">
+        <div className="panel bg-grid relative overflow-hidden p-5 sm:p-8">
           {preparedFor && (
-            <p className="label mb-5 inline-flex items-center gap-2 rounded border border-accent px-3 py-1.5 text-accent">
+            <p className="chip chip-accent mb-4">
+              <Icon name="doc" size={12} />
               Prepared for {preparedFor}
             </p>
           )}
-          <p className="label text-muted">{hero.eyebrow}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="chip chip-info">
+              <Icon name="pin" size={12} />
+              {hero.eyebrow}
+            </span>
+          </div>
           <h1
             id="hero-title"
-            className="mt-4 font-display text-[2rem] font-extrabold leading-[1.04] tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]"
+            className="mt-4 font-display text-[1.8rem] font-bold leading-[1.1] tracking-tight text-balance sm:text-[2.6rem] xl:text-[2.9rem]"
           >
             {hero.h1}
           </h1>
-          <dl aria-label="Headline results" className="mt-5 grid grid-cols-3 divide-x divide-dashed divide-line rounded-lg border border-line bg-surface sm:hidden">
-            {hero.headline.map((h) => (
-              <div key={h.label} className="flex flex-col-reverse justify-end px-2.5 py-2.5">
-                <dt className="text-[0.75rem] leading-tight text-muted">{h.label}</dt>
-                <dd className="font-display text-lg font-extrabold leading-tight tracking-tight text-accent">{h.value}</dd>
-              </div>
+
+          {/* Phones: KPIs come straight after the headline so they are in the first screen. */}
+          <ul aria-label="Headline results" className="mt-5 grid grid-cols-2 gap-2 sm:hidden">
+            {headlineKpis.map((k) => (
+              <li key={k.label}>
+                <StatTile compact label={k.label} value={k.value} status={k.status} />
+              </li>
             ))}
-          </dl>
-          <p className="mt-4 max-w-[38rem] text-muted text-pretty sm:mt-5">{hero.sub}</p>
-          <div className="mt-6 flex flex-wrap gap-3 sm:mt-7">
+          </ul>
+
+          <p className="mt-5 max-w-[40rem] text-muted text-pretty">{hero.sub}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
             <a href={site.cvPdf} download className="btn btn-primary" data-track="cv_download">
-              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16" />
-              </svg>
+              <Icon name="download" />
               Download CV
             </a>
             <a href="#contact" className="btn btn-ghost" data-track="contact_click">
+              <Icon name="contact" />
               Contact me
             </a>
+            {wa && (
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-ghost max-sm:hidden" data-track="whatsapp_click">
+                <Icon name="whatsapp" />
+                WhatsApp
+              </a>
+            )}
           </div>
-          <ul aria-label="Key systems and sectors" className="label mt-6 flex flex-wrap gap-x-3 gap-y-1 text-muted">
-            {hero.trust.map((t, i) => (
-              <li key={t}>
+          <ul aria-label="Key systems and sectors" className="mt-6 flex flex-wrap gap-2">
+            {hero.trust.map((t) => (
+              <li key={t} className="chip chip-neutral">
                 {t}
-                {i < hero.trust.length - 1 && <span aria-hidden="true" className="ml-3">·</span>}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="relative rounded-lg border max-sm:hidden border-line bg-surface shadow-[0_1px_0_var(--line),0_12px_32px_-16px_rgb(15_27_45/0.25)]">
-          <div className="label flex items-center justify-between border-b border-dashed border-line px-5 py-3 text-muted">
-            <span>Consignment · Results</span>
-            <span>{site.location}</span>
+        <aside aria-label="Profile card" className="panel flex flex-col overflow-hidden">
+          <div className="flex items-center gap-4 border-b border-line p-5">
+            <Image
+              src={site.photo}
+              alt={`${site.name}, ${site.role}`}
+              width={640}
+              height={799}
+              priority
+              sizes="88px"
+              className="h-[88px] w-[88px] shrink-0 rounded-2xl object-cover object-top"
+            />
+            <div className="min-w-0">
+              <p className="font-display text-lg font-bold leading-tight">{site.name}</p>
+              <p className="text-[0.92rem]">{site.role}</p>
+              <p className="text-[0.85rem] text-muted">{current?.company}</p>
+            </div>
           </div>
-          <dl className="divide-y divide-dashed divide-line">
-            {hero.headline.map((h, i) => (
-              <div key={h.label} className="flex items-center justify-between gap-4 px-5 py-4">
-                <div className="flex flex-col-reverse">
-                  <dt className="text-sm text-muted">{h.label}</dt>
-                  <dd className="font-display text-3xl font-extrabold tracking-tight text-accent sm:text-4xl">{h.value}</dd>
-                </div>
-                <StampChip>{stamps[i]}</StampChip>
+          <dl className="grid grid-cols-2 gap-px bg-line text-[0.88rem]">
+            {facts.map((f) => (
+              <div key={f.k} className="bg-surface p-4">
+                <dt className="label text-muted">{f.k}</dt>
+                <dd className="mt-1 font-semibold">{f.v}</dd>
               </div>
             ))}
+            <div className="bg-surface p-4">
+              <dt className="label text-muted">Mobile / WhatsApp</dt>
+              <dd className="mt-1 font-semibold">
+                <a href={contact.phoneHref} className="hover:text-primary" data-track="phone_click">
+                  {contact.phone}
+                </a>
+              </dd>
+            </div>
           </dl>
-          <div className="label flex flex-wrap items-center justify-between gap-2 border-t border-dashed border-line px-5 py-3 text-muted">
-            <span>JAFZA → Open to work</span>
-            <a href={`mailto:${contact.email}`} className="link normal-case tracking-normal" data-track="contact_click">
-              {contact.email}
-            </a>
+          <div className="border-t border-line p-4">
+            <p className="label text-muted">Experience</p>
+            <ol className="mt-2 space-y-1.5 text-[0.88rem]">
+              {experience.map((r) => (
+                <li key={r.id} className="flex items-center justify-between gap-3">
+                  <span className="flex items-center gap-2">
+                    <span aria-hidden="true" className={`h-2 w-2 shrink-0 rounded-full ${r.current ? "bg-accent" : "bg-[var(--viz-1)]"}`} />
+                    <span className="font-semibold">{r.title.split(" / ")[0]}</span>
+                  </span>
+                  <span className="shrink-0 text-muted tabular-nums">{r.dates.replace(" – ", "–")}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
+        </aside>
       </div>
+
+      {/* Tablet and up: KPI row */}
+      <ul aria-label="Headline results" className="mt-5 hidden gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+        {headlineKpis.map((k) => (
+          <li key={k.label}>
+            <StatTile label={k.label} value={k.value} delta={k.delta} status={k.status} icon={k.icon} />
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -44,23 +44,23 @@ export function Mirsal2Checklist() {
                 type="button"
                 aria-pressed={flow === f}
                 onClick={() => setFlow(f)}
-                className={`min-h-11 flex-1 rounded-md border font-semibold capitalize ${flow === f ? "border-ink bg-ink text-paper" : "border-line hover:border-ink"}`}
+                className={`min-h-11 flex-1 rounded-lg border font-semibold capitalize ${flow === f ? "border-primary bg-primary text-primary-ink" : "border-line bg-surface hover:border-ink"}`}
               >
                 {f}
               </button>
             ))}
           </div>
         </fieldset>
-        <div className="mt-5 rounded-lg border border-line bg-paper p-4" aria-live="polite">
+        <div className="mt-5 rounded-lg border border-line bg-surface-2 p-4" aria-live="polite">
           <p className="label text-muted">Status</p>
           <p className="mt-1 font-display text-3xl font-extrabold tabular-nums">
             {count} / {items.length}
           </p>
           <div className="mt-3">
             {complete ? (
-              <span className="stamp">✓ READY TO FILE</span>
+              <span className="chip chip-ok">✓ Ready to file</span>
             ) : (
-              <span className="stamp !text-accent">PENDING DOCS</span>
+              <span className="chip chip-accent">Pending documents</span>
             )}
           </div>
         </div>
@@ -73,7 +73,7 @@ export function Mirsal2Checklist() {
           const key = `${flow}-${i.id}`;
           return (
             <li key={key}>
-              <label className="flex min-h-11 cursor-pointer items-start gap-3 rounded-md border border-line bg-paper px-3 py-2.5 has-[:checked]:border-ok">
+              <label className="flex min-h-11 cursor-pointer items-start gap-3 rounded-lg border border-line bg-surface-2 px-3 py-2.5 has-[:checked]:border-ok">
                 <input
                   type="checkbox"
                   checked={!!done[key]}

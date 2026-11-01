@@ -31,7 +31,7 @@ const terms: Term[] = [
 ];
 
 function Who({ p }: { p: Party }) {
-  return <span className={`label rounded px-1.5 py-0.5 ${p === "Seller" ? "bg-accent text-accent-ink" : "border border-line text-ink"}`}>{p}</span>;
+  return <span className={`label rounded px-1.5 py-0.5 ${p === "Seller" ? "bg-primary text-primary-ink" : "border border-line text-ink"}`}>{p}</span>;
 }
 
 /** Incoterms 2020 responsibility chart. */
@@ -49,14 +49,14 @@ export function Incoterms() {
               type="button"
               aria-pressed={x.code === code}
               onClick={() => setCode(x.code)}
-              className={`min-h-11 rounded-md border font-mono text-sm font-semibold ${x.code === code ? "border-ink bg-ink text-paper" : "border-line hover:border-ink"}`}
+              className={`min-h-11 rounded-lg border font-mono text-sm font-semibold ${x.code === code ? "border-primary bg-primary text-primary-ink" : "border-line bg-surface hover:border-ink"}`}
             >
               {x.code}
             </button>
           ))}
         </div>
       </fieldset>
-      <div aria-live="polite" className="rounded-lg border border-line bg-paper p-4">
+      <div aria-live="polite" className="rounded-lg border border-line bg-surface-2 p-4">
         <p className="font-display text-xl font-bold">
           {t.code} · {t.name}
         </p>
