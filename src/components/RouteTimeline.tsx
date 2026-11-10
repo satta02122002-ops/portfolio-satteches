@@ -31,7 +31,7 @@ export function RouteTimeline() {
           </p>
           <span className="chip chip-accent">
             <Icon name="truck" size={12} />
-            In transit
+            Open to new roles
           </span>
         </div>
 
