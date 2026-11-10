@@ -1,32 +1,44 @@
 import type { Pillar } from "@/content";
 import { About } from "./About";
-import { AppShell } from "./AppShell";
 import { CaseStudies } from "./CaseStudies";
 import { Certifications } from "./Certifications";
 import { Contact } from "./Contact";
 import { ContactForm } from "./ContactForm";
-import { Dashboard } from "./Dashboard";
+import { FastLane } from "./FastLane";
 import { FocusProvider } from "./HiringFocus";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
 import { Hero } from "./Hero";
+import { ProofStrip } from "./ProofStrip";
 import { RouteTimeline } from "./RouteTimeline";
 import { Skills } from "./Skills";
 import { ToolsSection } from "./ToolsSection";
+import { WaybillStrip } from "./WaybillStrip";
 
 /** The one-page portfolio. /for/[company] renders the same page with a personalised hero. */
 export function HomePage({ preparedFor, focus = null }: { preparedFor?: string; focus?: Pillar | null }) {
   return (
-    <AppShell>
+    <>
+      <a href="#main" className="sr-only-focusable fixed left-4 top-4 z-50 rounded bg-ink px-4 py-3 text-paper">
+        Skip to content
+      </a>
+      <WaybillStrip />
+      <Header />
       <FocusProvider initial={focus}>
-        <Hero preparedFor={preparedFor} />
-        <Dashboard />
-        <About />
-        <RouteTimeline />
-        <CaseStudies />
-        <Skills />
-        <ToolsSection />
-        <Certifications />
-        <Contact form={<ContactForm company={preparedFor} />} />
+        <main id="main">
+          <Hero preparedFor={preparedFor} />
+          <ProofStrip />
+          <About />
+          <RouteTimeline />
+          <CaseStudies />
+          <Skills />
+          <ToolsSection />
+          <Certifications />
+          <Contact form={<ContactForm company={preparedFor} />} />
+        </main>
       </FocusProvider>
-    </AppShell>
+      <Footer />
+      <FastLane />
+    </>
   );
 }
