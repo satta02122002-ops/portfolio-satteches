@@ -189,7 +189,7 @@ export const about = {
   facts: [
     { k: "Languages", v: "English, Tamil, Malayalam, Hindi" },
     { k: "Based in", v: "Dubai, UAE" },
-    { k: "Visa", v: "UAE resident visa (active)" },
+    { k: "Visa", v: "UAE resident visa (cancelled)" },
     { k: "Education", v: "Diploma in Mechanical Engineering, First Class with Distinction" },
   ],
 };
@@ -213,8 +213,7 @@ export const experience: Role[] = [
     title: "Logistics Coordinator",
     company: "ISS Global Forwarding UAE LLC",
     place: "JAFZA, Dubai",
-    dates: "Mar 2024 – present",
-    current: true,
+    dates: "Mar 2024 – Nov 2026",
     summary:
       "Freight forwarding and contract-logistics provider: sea, air, land, customs clearance, warehousing and value-added services.",
     bullets: [

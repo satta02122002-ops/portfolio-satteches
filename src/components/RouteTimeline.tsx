@@ -13,7 +13,9 @@ export function RouteTimeline() {
     { key: "next", title: nextStop.title, sub: "UAE", when: "Next", state: "next" },
   ] as const;
   const currentIndex = steps.findIndex((s) => s.state === "current");
-  const progress = (currentIndex / (steps.length - 1)) * 100;
+  // No current role: the line runs up to the last completed milestone.
+  const reached = currentIndex >= 0 ? currentIndex : steps.length - 2;
+  const progress = (reached / (steps.length - 1)) * 100;
 
   return (
     <Section

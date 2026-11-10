@@ -6,7 +6,7 @@ import { StatTile } from "./viz/StatTile";
 /** Module 01 · Overview: who, what, proof and the two actions a recruiter needs. */
 export function Hero({ preparedFor }: { preparedFor?: string }) {
   const wa = whatsappLink();
-  const current = experience.find((r) => r.current);
+  const current = experience.find((r) => r.current) ?? experience[0];
   const facts = about.facts.filter((f) => f.k !== "Education");
   return (
     <section id={sections.hero.id} aria-labelledby="hero-title" className="scroll-mt-28 pt-6 md:pt-10">
