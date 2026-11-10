@@ -12,11 +12,10 @@ export const site = {
   initials: "SC",
   title: "Sattanathan Chandran | Logistics Coordinator, Dubai (Freight, Customs, SAP)",
   description:
-    "Logistics coordinator in JAFZA, Dubai. 99.8% inventory accuracy, zero customs holds on Mirsal 2, SAP S/4HANA, and self-built automation. Open to senior logistics roles.",
+    "Logistics coordinator in JAFZA, Dubai. 99.8% inventory accuracy, zero customs holds on Mirsal 2, SAP S/4HANA, and self-built automation. Open to new roles in the UAE.",
   role: "Logistics Coordinator",
-  employer: "ISS Global Forwarding UAE LLC",
   location: "JAFZA, Dubai",
-  target: "Open to senior logistics roles in the UAE",
+  target: "Open to new roles in the UAE",
   /** Date the "zero customs holds" claim was last verified. Update when needed. */
   asOf: "Oct 2026",
   replyTime: "within one working day",
@@ -47,8 +46,8 @@ export const whatsappLink = (text = "Hi Sattanathan, I saw your portfolio at sat
   contact.whatsapp ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(text)}` : null;
 
 export const waybill = {
-  full: "SATTANATHAN CHANDRAN · DXB / JAFZA · STATUS: OPEN TO SENIOR LOGISTICS ROLES",
-  short: "DXB / JAFZA · OPEN TO SENIOR ROLES",
+  full: "SATTANATHAN CHANDRAN · DXB / JAFZA · STATUS: OPEN TO NEW ROLES",
+  short: "DXB / JAFZA · OPEN TO NEW ROLES",
 };
 
 /** Headline KPIs on the overview, in recruiter priority order. */
@@ -62,7 +61,7 @@ export const headlineKpis = [
 export const hero = {
   eyebrow: "Logistics Coordinator · JAFZA, Dubai",
   h1: "I make freight, customs and warehouse operations faster and more accurate.",
-  sub: "6 years across freight forwarding, 3PL warehousing and UAE customs clearance, with SAP S/4HANA and self-built automation. Open to senior logistics roles in the UAE.",
+  sub: "6 years across freight forwarding, 3PL warehousing and UAE customs clearance, with SAP S/4HANA and self-built automation. Open to new roles in the UAE.",
   trust: ["Mirsal 2", "SAP S/4HANA MM & WM", "JAFZA", "FMCG, retail/fashion, e-commerce"],
   headline: [
     { value: "99.8%", label: "inventory accuracy" },
@@ -185,11 +184,11 @@ export const pillars = [
 
 export const about = {
   heading: "Accurate on the floor, compliant at the border, always looking for a faster way.",
-  body: "I'm a logistics professional based in JAFZA, Dubai, with 6 years across freight forwarding, 3PL warehouse operations, UAE customs clearance and manufacturing material flow. I started on the floor of a rail manufacturer, where accuracy and speed came from process, not luck. Today I coordinate sea, air and road freight for FMCG, retail/fashion and e-commerce clients. I'm self-taught in Excel VBA, Power BI and Power Automate, and I use them to remove manual work. I'm looking for a senior role where accuracy, speed and smart automation drive results.",
+  body: "I'm a logistics professional based in JAFZA, Dubai, with 6 years across freight forwarding, 3PL warehouse operations, UAE customs clearance and manufacturing material flow. I started on the floor of a rail manufacturer, where accuracy and speed came from process, not luck. Most recently I coordinated sea, air and road freight for FMCG, retail/fashion and e-commerce clients. I'm self-taught in Excel VBA, Power BI and Power Automate, and I use them to remove manual work. I'm open to new roles where accuracy, speed and smart automation drive results.",
   facts: [
     { k: "Languages", v: "English, Tamil, Malayalam, Hindi" },
     { k: "Based in", v: "Dubai, UAE" },
-    { k: "Visa", v: "UAE resident visa (active)" },
+    { k: "Visa", v: "UAE resident visa (cancelled)" },
     { k: "Education", v: "Diploma in Mechanical Engineering, First Class with Distinction" },
   ],
 };
@@ -213,8 +212,7 @@ export const experience: Role[] = [
     title: "Logistics Coordinator",
     company: "ISS Global Forwarding UAE LLC",
     place: "JAFZA, Dubai",
-    dates: "Mar 2024 – present",
-    current: true,
+    dates: "Mar 2024 – Nov 2026",
     summary:
       "Freight forwarding and contract-logistics provider: sea, air, land, customs clearance, warehousing and value-added services.",
     bullets: [
@@ -409,7 +407,7 @@ export const awards = [
 
 export const contactCopy = {
   heading: "Hiring for a logistics, freight or warehouse role in the UAE?",
-  body: `Send me the role and I'll reply ${site.replyTime}. I'm open to senior positions in freight forwarding, 3PL and contract logistics.`,
+  body: `Send me the role and I'll reply ${site.replyTime}. I'm open to new roles in freight forwarding, 3PL and contract logistics.`,
   success: `Thanks, got it. I'll reply ${site.replyTime}.`,
 };
 

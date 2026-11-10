@@ -45,7 +45,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <p className="truncate text-[0.78rem] text-muted">{site.location}</p>
               <span className="chip chip-ok mt-1 !px-2 !py-0.5 !text-[0.6rem]">
                 <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ok" />
-                Open to senior roles
+                Open to new roles
               </span>
             </div>
           </div>

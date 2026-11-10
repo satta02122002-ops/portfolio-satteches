@@ -38,7 +38,7 @@ export default function CvPage() {
             <p className="mt-1 text-[0.9rem] text-muted print:text-black">
               <a href={`mailto:${contact.email}`}>{contact.email}</a> · <a href={contact.phoneHref}>{contact.phone}</a> (mobile and WhatsApp) ·{" "}
               <a href={contact.linkedin}>{contact.linkedinLabel}</a> ·{" "}
-              <a href={site.url}>satteches.com</a> · UAE resident visa (active) · Languages: {languages}
+              <a href={site.url}>satteches.com</a> · UAE resident visa (cancelled) · Languages: {languages}
             </p>
           </header>
 
