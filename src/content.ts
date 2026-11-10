@@ -170,7 +170,7 @@ export const customsDocs = ["Commercial invoice", "Packing list", "Bill of Entry
 export const pillars = [
   {
     title: "UAE freight and customs",
-    body: "Sea, air and road coordination, Mirsal 2 clearances, zero customs holds to date.",
+    body: "Sea, air and road coordination, Mirsal 2 clearances, zero customs holds.",
   },
   {
     title: "Warehouse and inventory accuracy",
@@ -216,12 +216,12 @@ export const experience: Role[] = [
     summary:
       "Freight forwarding and contract-logistics provider: sea, air, land, customs clearance, warehousing and value-added services.",
     bullets: [
-      "Coordinate end-to-end sea, air and road shipments for regional and overseas clients in FMCG, retail/fashion and e-commerce, working daily with customers, vendors, carriers and internal teams.",
-      "Clear import and export cargo through Mirsal 2 (commercial invoices, packing lists, Bills of Entry, Certificates of Origin, ASN / GRN), with zero customs-hold incidents to date.",
-      "Negotiate rates with shipping lines, airlines and trucking vendors. Lead weekly reviews with brokers, carriers and warehouse teams, and act as the escalation point for exceptions and demurrage risk.",
-      "Run value-added services (picking, packing, sorting, labelling, kitting) with FIFO batch allocation, keeping WMS and physical stock aligned to 99%+ and cutting discrepancies by 15%.",
+      "Coordinated end-to-end sea, air and road shipments for regional and overseas clients in FMCG, retail/fashion and e-commerce, working daily with customers, vendors, carriers and internal teams.",
+      "Cleared import and export cargo through Mirsal 2 (commercial invoices, packing lists, Bills of Entry, Certificates of Origin, ASN / GRN), with zero customs-hold incidents.",
+      "Negotiated rates with shipping lines, airlines and trucking vendors. Led weekly reviews with brokers, carriers and warehouse teams, and acted as the escalation point for exceptions and demurrage risk.",
+      "Ran value-added services (picking, packing, sorting, labelling, kitting) with FIFO batch allocation, keeping WMS and physical stock aligned to 99%+ and cutting discrepancies by 15%.",
       "Built an Excel billing tracker for monthly storage and VAS invoices that improved accuracy and removed the month-end bottleneck.",
-      "Fire Safety and Emergency First Aid Volunteer, supporting drills and emergency preparedness.",
+      "Served as Fire Safety and Emergency First Aid Volunteer, supporting drills and emergency preparedness.",
     ],
   },
   {
